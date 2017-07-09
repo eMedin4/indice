@@ -1,0 +1,156 @@
+
+/************************************************************************************************
+    RESET  
+************************************************************************************************/
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body, html {
+    height: 100%;
+}
+ol, ul {
+    list-style: none;
+}
+input,
+textarea,
+button {
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    margin: 0;
+    /* -webkit-appearance: none; */
+}
+input:focus {
+    outline: 0;
+}
+img {
+    max-width: 100%;
+    /* vertical-align: bottom; */
+}
+a {
+    text-decoration:none; 
+    color: #fff;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+
+/************************************************************************************************
+    HELPERS    
+************************************************************************************************/
+
+.pv5 { padding: 5px 0; }
+.pv10 { padding: 10px 0; }
+.pv20 { padding: 20px 0; }
+.inline-block { display: inline-block; }
+
+
+
+/************************************************************************************************
+    CUSTOM    
+************************************************************************************************/
+
+html {
+    font-size: 18px;
+
+}
+
+body {
+    font-family: "source sans pro",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #1c1f21;
+    line-height: 26px;
+    letter-spacing: -0.3px;
+    text-align: center;
+}
+
+.inner {
+}
+
+a {
+    color: #2b80d6;
+}
+
+h1 {
+    font-size: 160px;
+    font-weight: 600;
+    line-height: 160px;
+    letter-spacing: -14px;
+    margin-bottom: 20px;
+    height: 240px;
+    padding-top: 80px;
+    color: #1c1f21;
+}
+
+h2 {
+    padding: 20px 0 5px;
+    
+}
+
+.limit {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+input {
+    border: 1px solid #80858e;
+    border-radius: 3px;
+    padding: 10px 14px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+    width: 120px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 14px;
+    border-radius: 3px;
+    background: #2b80d6;
+    color: #fff;
+    cursor: pointer;
+    transition: background .3s ease;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btn:hover {
+    background: #186294;
+}
+
+.box-message {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+    padding: 20px 24px;
+    border: 1px solid #e6e8ea;
+    border-radius: 5px;
+    margin: 15px 0;
+    display: inline-block;
+    background: #F0F2F5;
+}
+
+.box-message-alert {
+    border-color: #eabbb5;
+    background: #fdede3;
+}
