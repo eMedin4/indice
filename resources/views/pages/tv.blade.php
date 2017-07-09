@@ -16,9 +16,6 @@
 		<section class="info">
 		
 
-
-
-
 		</section>
 
 		<section class="content">
