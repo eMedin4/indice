@@ -39,9 +39,9 @@ class CreateMoviesTable extends Migration
             $table->integer('rt_rat')->nullable();
             $table->mediumInteger('rt_rat_count')->nullable();
             $table->timestamps();
-
-            DB::statement('ALTER TABLE movies ADD FULLTEXT search(title, original_title)');
         });
+        
+        DB::statement('ALTER TABLE movies ADD FULLTEXT search(title, original_title)');
     }
 
     /**
