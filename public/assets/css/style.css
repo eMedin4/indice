@@ -169,8 +169,6 @@ select {
 /* SINGLE PAGE */
 
 .single-content {
-    padding-left: 35px;
-    padding-right: 20px;
     background-size: 100% auto;
     background-position: center 0!important;
     background-repeat: no-repeat;
@@ -248,6 +246,7 @@ select {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 
@@ -677,7 +676,7 @@ h1 {
     text-align: center;
     margin-left: 10px;
     border-radius: 3px;
-    color: #8c939a;
+    /*color: #8c939a;*/
 }
 
 .item-empty {
@@ -1004,7 +1003,7 @@ h1 {
 }
 
 .rating {
-    margin-right: 20px;
+    padding: 0 20px 20px 0;
     display: inline-block;
 }
 
@@ -1030,7 +1029,7 @@ h1 {
 }
 
 .rating-meta .link {
-    padding: 1px 5px;
+    padding: 0 5px;
 }
 
 .rating-tomattoes .rating-meta a {
@@ -1498,6 +1497,7 @@ input[type=checkbox]:checked + .lbl-check:before {
 
 .search-results .loop-features {
     font-size: 13px;
+    line-height: 16px;
 }
 
 
@@ -1739,17 +1739,12 @@ input[type=checkbox]:checked + .lbl-check:before {
 }
 
 
-
 /*PUTNO DE MENU HAMBURGUER*/
 @media (max-width:960px) {
 
     .info {
         max-width: 420px;
         margin-right: 40px;
-    }
-
-    .info-margins {
-        margin-right: 30px;
     }
 
     .margins {
@@ -1761,21 +1756,25 @@ input[type=checkbox]:checked + .lbl-check:before {
         margin-top: 20px;
     }
 
+    .wrap-mobile {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
 
 
 @media (max-width:500px) {
 
+    .info {
+        line-height: 20px;
+    }
+
+    .items a {
+        padding: 2px 0;
+    }
 
     h1 {
         margin-top: 0;
@@ -1803,9 +1802,8 @@ input[type=checkbox]:checked + .lbl-check:before {
 }
 
 
-
-
 @media (max-width: 500px) {
+
     .list-info-wrap {
         align-items: flex-start;
         flex-direction: column;
