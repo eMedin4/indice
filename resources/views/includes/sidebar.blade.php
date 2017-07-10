@@ -1,6 +1,8 @@
 
 	<section class="info">
 
+		<div class="info-close"><i class="fa fa-times"></i></div>
+
 		<div class="logo info-margins">
 			<a href="{{route('home')}}">
 				Indicecine

@@ -15,7 +15,7 @@ $('.toggle-icon').on('click', function() {
     $('body').toggleClass('menu-visible');
 });
 
-$('.darken-overlay').on('click', function() {
+$('.darken-overlay, .info-close').on('click', function() {
     $('body').removeClass('menu-visible');
 })
 
