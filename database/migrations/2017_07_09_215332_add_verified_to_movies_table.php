@@ -14,7 +14,7 @@ class AddVerifiedToMoviesTable extends Migration
     public function up()
     {
         Schema::table('movies', function (Blueprint $table) {
-            $table->tinyInteger('verified');
+            $table->tinyInteger('verified')->default(0);
         });
     }
 

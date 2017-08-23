@@ -15,7 +15,7 @@ class CreateListsTable extends Migration
     {
         Schema::create('lists', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 48);
+            $table->string('name', 64);
             $table->string('description', 500)->nullable();
             $table->boolean('ordered')->default(0);
             $table->integer('user_id')->unsigned();

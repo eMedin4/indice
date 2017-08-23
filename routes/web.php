@@ -12,6 +12,7 @@
 		Route::get('/fromcartelera', 	['as' => 'fromcartelera','uses' => 'Admin\FilmAffinityController@fromCartelera']);
 		Route::get('/frommovistar', 	['as' => 'frommovistar','uses' => 'Admin\FilmAffinityController@fromMovistar']);
 		Route::get('/frommovistarurl', 	['as' => 'frommovistarurl','uses' => 'Admin\FilmAffinityController@fromMovistarUrl']);
+		Route::get('/frommovistarsingle', 	['as' => 'frommovistarsingle','uses' => 'Admin\FilmAffinityController@fromMovistarSingle']);
 	});
 
 

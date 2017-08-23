@@ -193,6 +193,11 @@ select {
     padding-top: 30%;
 }
 
+.wrap-mobile {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 /*CUANDO NO HAY BACKGROUND*/
     .single-content-no-background .movie-header {
         padding-top: 30px;
@@ -220,7 +225,8 @@ select {
 
 .movie-summary {
     color: #cfd5da;
-    padding: 12px 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
     /*para que no se quede debajo del background en algún caso*/
     position: relative;
 }
@@ -242,7 +248,8 @@ select {
 }
 
 .tools {
-    padding: 10px 0 30px;
+    padding-top: 10px;
+    padding-bottom: 30px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -272,11 +279,14 @@ select {
 
 h1 {
     display: inline-block;
-    font-size: 74px;
-    line-height: 74px;
-    letter-spacing: -3px;
-    font-weight: 600;
-    margin: 38px 0 20px;
+    font-size: 84px;
+    line-height: 78px;
+    letter-spacing: -2px;
+    font-weight: 700;
+    margin: 45px 0 20px;
+    text-transform: uppercase;
+    left: -2px;
+    position: relative;
 }
 
 .single-page h1 {
@@ -285,7 +295,8 @@ h1 {
     line-height: 60px;
     font-weight: 700;
     letter-spacing: -2px;
-    margin: 0 0 10px -2px;
+    margin: 0 0 10px;
+
 }
 
 .list-description {
@@ -612,7 +623,7 @@ h1 {
 
 
 .info-margins {
-    margin-right: 50px;
+    margin-right: 30px;
     margin-left: 20px;
 }
 
@@ -629,10 +640,10 @@ h1 {
 .item-list a {
     padding: 4px 0;
     display: inline-flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     margin: 4px 0;
     align-items: center;
-    color: #c7cfd6;
+    color: #7a8088;
 }
 
 .items a:hover,
@@ -671,8 +682,7 @@ h1 {
 .item-top-mylists,
 .item-top-likes, 
 .item-top-trend { 
-    color: #7a8088;
-    font-size: 20px; 
+    color: #c7cfd6;
 }
 
 .item-top {
@@ -683,7 +693,7 @@ h1 {
 .item-count {
     font-size: 16px;
     letter-spacing: -1px;
-    background: #293446;
+    background: #222933;
     width: 24px;
     flex: 0 0 24px;
     display: inline-block;
@@ -755,20 +765,21 @@ h1 {
 }
 
 .lab-release {
-    background: #283243;
+    background: #1f2329;
     padding: 0px 3px;
     white-space: nowrap;
-    color: #717c8c;
+    color: #7a8088;
     font-size: 14px;
     text-transform: uppercase;
     position: relative;
     top: -2px;
-    box-shadow: 0 0 3px;
     margin-left: 3px;
+    border-radius: 2px;
 }
 
 .lab-new-release {
     color: #fff;
+    background: #9e4742;
 }
 
 /* HACK EXTRACTOS DE 3 LINEAS */
@@ -1132,7 +1143,7 @@ h1 {
 ************************************************************************************************/
 
 .critics {
-    padding: 20px 0;
+    padding-top: 20px;
     border-top: 1px solid #1e2125;
 }
 

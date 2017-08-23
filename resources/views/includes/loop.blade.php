@@ -33,7 +33,7 @@
 
 				<div class="loop-features">
 					{{$movie->year}}
-					<div class="country country-{{$movie->country}}" title="{{$movie->country}}"></div>
+					<div class="country country-{{str_slug($movie->country)}}" title="{{$movie->country}}"></div>
 					<div class="stars stars-{{$movie->avg}}"></div>
 				</div>
 

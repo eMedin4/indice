@@ -1,6 +1,8 @@
 <?php
 namespace App\Libraries;
 
+use Carbon\Carbon;
+use Goutte\Client;
 use App\Libraries\Format;
 use App\Repositories\scrapRepository;
 
@@ -16,8 +18,61 @@ class MovistarScrap
 		$this->scrapRepository = $scrapRepository;
 	}
 
+	public function init()
+    {
+    	//BORRAMOS LA LISTA
+        $this->scrapRepository->resetMovistar();
+
+        $date = Carbon::now()->toDateString();
+        $client = new Client();
+
+        //RECORREMOS CADA CANAL
+        foreach (config('movies.channels') as $channel) {
+        	$url = 'http://www.movistarplus.es/guiamovil/' . $channel . '/' . $date;
+        	$crawler = $client->request('GET', $url);
+
+        	//SI HAY ERROR
+        	if ($client->getResponse()->getStatus() !== 200) {
+			return view('icback.error', ['message' => 'La url generada <a href="' . $url . '">' . $url . '</a> no es válida y devuelve un error ' . $client->getResponse()->getStatus()]);
+			} 
+
+			//SCRAPEAMOS PAGINA DEL CANAL (MOVISTAR)
+			$data = $this->getPage($crawler, $date);
+        }
+    }
+
+    public function initSingle()
+    {
+    	$date = Carbon::now()->toDateString();
+    	$client = new Client();
+    	$url = 'http://www.movistarplus.es/guiamovil/MV3';
+    	$crawler = $client->request('GET', $url);
+
+    	//SI HAY ERROR
+    	if ($client->getResponse()->getStatus() !== 200) {
+		return view('icback.error', ['message' => 'La url generada <a href="' . $url . '">' . $url . '</a> no es válida y devuelve un error ' . $client->getResponse()->getStatus()]);
+		} 
+
+		//SCRAPEAMOS PAGINA DEL CANAL (MOVISTAR)
+			$data = $this->getPage($crawler, $date);
+    }
 
 	public function getPage($crawler, $date)
+	{
+
+		dd($crawler);
+		dd(count($crawler->filter('.container_box g_CN')));
+
+		//RECORREMOS FILAS
+		$crawler->filter('.container_box g_CN')->each(function($node, $i) {
+			dd($node);
+		});
+		dd('no entra');
+
+	}
+
+
+	public function getPage2($crawler, $date)
 	{
 
 		//RECORREMOS FILAS

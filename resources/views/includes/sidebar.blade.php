@@ -39,13 +39,25 @@
 			@else
 				<li><span class="item-empty">Aún no tienes nada</span></li>
 			@endif
-
-
-			
 		</ul>
 
 		<ul class="item-list info-margins popular">
-			<li><div class="item-top item-top-trend">POPULARES</div></li>
+			<li><div class="item-top item-top-trend">LISTAS TOP</div></li>
+
+			<li>
+				<a href="{{route('home')}}">
+					<span class="item-count">x</span>
+					<span>Estrenos y cartelera en cines</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#">
+					<span class="item-count">x</span>
+					<span>Ahora en Televisión</span>
+				</a>
+			</li>
+
 			@foreach ($popular as $list)
 				@include('partials.info-lists')
 			@endforeach
