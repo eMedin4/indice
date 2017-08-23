@@ -3,24 +3,6 @@
 
 		<div class="info-close"><i class="fa fa-times"></i></div>
 
-		<div class="logo info-margins">
-			<a href="{{route('home')}}">
-				Indicecine
-				<!-- <span class="shape"></span>
-				<span class="shape2"></span>
-				<span class="shape3"></span> -->
-			</a>
-		</div>
-
-		<ul class="items info-margins">
-			<li><a href="{{route('search')}}"><span>Buscar películas</span><i class="fa fa-search-btb search-minicon"></i></a></li>
-			@if (Auth::check())
-				<li><a href="{{route('userpage', ['name' => str_slug(Auth::user()->name), 'id' => Auth::id()])}}" class="nick"><span>{{Auth::user()->nick}}</span><i class="icon-user fa fa-user"></i></a></li>
-			@else
-				<li><a href="{{route('login')}}" class="nick">Entra con tu usuario<i class="icon-user fa fa-user"></i></a></li>
-			@endif
-		</ul>
-
 		<ul class="item-list info-margins my-lists">
 			<li><div class="item-top item-top-mylists">MIS LISTAS</div></li>
 			@if (Auth::check())
@@ -35,13 +17,13 @@
 
 			@else
 				<li>
-					<a href="{{route('login')}}"><span><i class="icon-ordered fa fa-sort-numeric-asc"></i>Mi Top 100</span><span class="item-count">0</span></a>
+					<a href="{{route('login')}}"><span class="item-count">0</span><span><i class="icon-ordered fa fa-sort-numeric-asc"></i>Mi Top 100</span></a>
 				</li>
 				<li>
-					<a href="{{route('login')}}"><span>Películas que quiero ver</span><span class="item-count">0</span></a>
+					<a href="{{route('login')}}"><span class="item-count">0</span><span>Películas que quiero ver</span></a>
 				</li>
 				<li>
-					<a href="{{route('login')}}"><span>Películas que ya he visto</span><span class="item-count">0</span></a>
+					<a href="{{route('login')}}"><span class="item-count">0</span><span>Películas que ya he visto</span></a>
 				</li>
 			@endif
 		</ul>
