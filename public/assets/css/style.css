@@ -421,9 +421,11 @@ h1 {
     }
 
     .toggle-icon i {
-        font-size: 22px;
+        font-size: 17px;
         padding-right: 10px;
         margin-right: 18px;
+        position: relative;
+        top: -1px;
     }
 
 /* ICONO HAMBURGUER */
@@ -1032,7 +1034,7 @@ h1 {
 .tv-tag {
     display: flex;
     align-items: center;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .channel-logo {
@@ -1785,7 +1787,7 @@ input[type=checkbox]:checked + .lbl-check:before {
     }
 
     .loop-data {
-        padding-left: 10px;
+        padding-left: 13px;
     }
 
     /*SINGLE*/

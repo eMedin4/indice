@@ -21,8 +21,6 @@
 
 	<section class="content">
 
-		@include('includes.mobile-bar')
-
 		@if ($movie->check_background)
 			<div class="single-content" style="background-image: url({{ asset('/assets/movieimages/backgrounds/std/' . $movie->slug . '.jpg') }})">
 		@else
@@ -179,6 +177,8 @@
 		</div><!-- single container -->
 
 	</section>
+
+	<div class="darken-overlay"></div>
 
 </div>
 @endsection
