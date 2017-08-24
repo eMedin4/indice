@@ -50,6 +50,13 @@ class ShowRepository {
         })->orderBy('date', 'desc')->get();
     }
 
+
+    public function tv()
+    {
+        return MovistarSchedule::join('movies', 'movistar_schedule.movie_id', '=', 'movies.id')->where('time', '>', Carbon::now()->subHour())->orderBy('time')->simplePaginate(60);
+        //return MovistarSchedule::with('movie')->orderBy('time')->simplePaginate(60);
+    }
+
     public function showFilterList($id, $filters)
     {
         $list = Listing::where('id', $id)->with(['movies' => function($q) use ($filters) {
@@ -87,11 +94,6 @@ class ShowRepository {
             abort(404);
         }*/
         return $list;
-    }
-
-    public function tv()
-    {
-        return MovistarSchedule::with('movie')->orderBy('time')->simplePaginate(60);
     }
 
     public function tvFilter($request)

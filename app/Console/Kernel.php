@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\cartelera::class
+        Commands\cartelera::class,
+        Commands\movistar::class,
     ];
 
     /**

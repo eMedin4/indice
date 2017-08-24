@@ -1027,6 +1027,59 @@ h1 {
 
 }
 
+
+.tv-tag {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.channel-logo {
+    background-image: url('../images/channels.png'); 
+    margin-right: 10px;   
+}
+
+.tv-time {
+    font-weight: 600;
+    color: #c7cfd6;    
+}
+
+.tv-time span {
+    font-size: 16px;
+    text-transform: uppercase;   
+}
+
+.channel-logo-MV1 { background-position: 0 0; width: 76px; height: 19px; }
+.channel-logo-CPACCI { background-position: 0 -30px; width: 67px; height: 19px; }
+.channel-logo-CPCOME { background-position: 0 -60px; width: 80px; height: 19px; }
+.channel-logo-CPCOLE { background-position: 0 -90px; width: 63px; height: 19px; }
+.channel-logo-CPXTRA { background-position: 0 -120px; width: 53px; height: 19px; }
+.channel-logo-AXN { background-position: 0 -150px; width: 57px; height: 19px; }
+.channel-logo-SET { background-position: 0 -180px; width: 57px; height: 24px; }
+.channel-logo-TNT { background-position: 0 -210px; width: 37px; height: 14px; }
+.channel-logo-TCM { background-position: 0 -240px; width: 61px; height: 19px; }
+.channel-logo-AMC { background-position: 0 -270px; width: 40px; height: 19px; }
+.channel-logo-MV3 { background-position: -100px 0; width: 29px; height: 18px; }
+.channel-logo-CL13 { background-position: -100px -30px; width: 28px; height: 24px; }
+.channel-logo-PCM { background-position: -100px -60px; width: 53px; height: 19px; }
+.channel-logo-PARCH { background-position: -100px -90px; width: 72px; height: 23px; }
+.channel-logo-SCI-FI { background-position: -100px -120px; width: 35px; height: 19px; }
+.channel-logo-FOXGE { background-position: -100px -150px; width: 33px; height: 14px; }
+.channel-logo-FOXCR { background-position: -100px -180px; width: 64px; height: 24px; }
+.channel-logo-HOLLYW { background-position: -100px -210px; width: 77px; height: 22px; }
+.channel-logo-COSMO { background-position: -100px -240px; width: 47px; height: 25px; }
+.channel-logo-DCH { background-position: -100px -270px; width: 51px; height: 21px; }
+.channel-logo-A3 { background-position: -200px -0px; width: 26px; height: 22px; }
+.channel-logo-SEXTA { background-position: -200px -30px; width: 17px; height: 20px; }
+.channel-logo-T5 { background-position: -200px -60px; width: 15px; height: 19px; }
+.channel-logo-LA2 { background-position: -200px -90px; width: 24px; height: 24px; }
+.channel-logo-TVE { background-position: -200px -120px; width: 24px; height: 24px; }
+.channel-logo-DIVINI { background-position: -200px -150px; width: 21px; height: 22px; }
+.channel-logo-NOVA { background-position: -200px -180px; width: 44px; height: 13px; }
+.channel-logo-C4 { background-position: -200px -210px; width: 63px; height: 15px; }
+.channel-logo-NEOX { background-position: -200px -240px; width: 53px; height: 13px; }
+
+
 .rating {
     padding: 0 20px 20px 0;
     display: inline-block;

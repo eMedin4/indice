@@ -334,6 +334,24 @@ class ScrapRepository {
 
     }
 
+
+    public function setMovie($movie, $datetime, $channelCode, $channel)
+    {
+        $match = MovistarSchedule::where([['movie_id', '=', $movie->id],['time', '=', $datetime]])->first();
+        if ($match) return;
+
+        MovistarSchedule::insert(
+            ['time' => $datetime, 'channel' => $channel, 'channel_code' => $channelCode, 'movie_id' => $movie->id]
+        );
+    }
+
+    public function getMovistarValidDate($date)
+    {
+        $match = MovistarSchedule::whereDate('time', $date)->count();
+        if ($match > 8) return false;
+        return true;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | AVERAGES
@@ -366,6 +384,7 @@ class ScrapRepository {
             default: return 0;
         }
     }
+
 
     /*
     |--------------------------------------------------------------------------

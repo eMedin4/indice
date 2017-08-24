@@ -49,10 +49,34 @@ class MovieController extends Controller
 		return view('pages.home', compact('list', 'currentDate', 'lists', 'filters', 'popular'));
 	}
 
-	public function tv()
+	public function tv(Request $request)
 	{
-		$list = $this->show->tv();
-		return view('pages.tv', compact('list'));
+
+		//SI ESTÁ FILTRADA
+			if ($request->exists('order')) {
+				$filters['order'] = $request->input('order');
+			}
+
+			if ($request->exists('fromyear') || $request->exists('toyear')) {
+				$filters['year']	 = true;
+				$filters['fromyear'] = $request->exists('fromyear') ? $request->input('fromyear') : 1900;
+	            $filters['toyear']   = $request->exists('toyear') ? $request->input('toyear') : 2019;
+			}
+
+			if ($request->exists('fromnote') || $request->exists('tonote')) {
+				$filters['note']	 = true;
+				$filters['fromnote'] = $request->exists('fromnote') ? $request->input('fromnote') : 0;
+	            $filters['tonote']   = $request->exists('tonote') ? $request->input('tonote') : 5;
+			}
+
+		if (isset($filters)) {
+			$list = $this->show->filterhome($filters);
+		} else {
+			$filters = null;
+			$list = $this->show->tv();
+		}
+
+		return view('pages.tv', compact('list', 'lists', 'filters', 'popular'));
 	}
 
 	public function tvFilter(Request $request)

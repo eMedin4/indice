@@ -72,8 +72,9 @@
 	MAIN
 */
 
-	//HOME
+	//PRINCIPAL
 	Route::get('/', ['as' => 'home', 'uses' => 'MovieController@home']);
+	Route::get('/television', ['as' => 'tv', 'uses' => 'MovieController@tv']);
 	
 	//VER USUARIO
 	Route::get('/usuario/{name}/{id}', ['as' => 'userpage', 'uses' => 'MovieController@userPage']);
@@ -92,7 +93,6 @@
 	Route::get('/{slug}', ['as' => 'show', 'uses' => 'MovieController@show']);
 
 	//OTROS
-	//Route::get('/television', ['as' => 'tv', 'uses' => 'MovieController@tv']);
 	//Route::get('/television/filtrar', ['as' => 'tvfilter', 'uses' => 'MovieController@tvFilter']);
 	//Route::get('/privacidad', function () { return view('pages.privacy'); });
 

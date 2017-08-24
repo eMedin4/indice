@@ -2,10 +2,6 @@
 
 	@foreach ($items as $movie)
 		<article data-id="{{$movie->id}}">
-			<!-- {{-- <div class="tv-tag tv-tag-alert">
-				<div class="tv-time">{!!$formatTime!!}</div>
-				<div class="channel-logo"><div class="channel-logo-{{$channel_code}}"></div></div>
-			</div> --}} -->
 
 			<a class="loop-poster" href="{{route('show', $movie->slug)}}" data-id="{{$movie->id}}">
 				@if ($movie->check_poster)
@@ -17,7 +13,15 @@
 
 			<div class="loop-data">
 
+				@if (Route::is('tv'))
+					<div class="tv-tag tv-tag-alert">
+						<div class="channel-logo channel-logo-{{$movie->channel_code}}"></div>
+						<div class="tv-time">{!!$movie->formatTime!!}</div>
+					</div>
+				@endif
+
 				<h2><a class="title" href="{{route('show', $movie->slug)}}">{{$movie->title}}</a></h2>
+
 				@if (Route::is('home'))
 					@if ($movie->name == 'Estreno')
 						<span class="lab-release lab-new-release">Estreno {{$movie->date->formatLocalized('%d %b')}}</span>
@@ -27,7 +31,6 @@
 				@elseif (Route::is('editlist'))
 					<div class="link link-alert btn-delete btn-delete-movie" data-id="{{$movie->id}}" data-text="¿Deseas borrar '{{$movie->title}}'' de la lista?" data-type="delete-movie">borrar</div>
 				@endif
-
 
 				<div class="review"><p>{{str_limit($movie->review, 400)}}</p></div>
 

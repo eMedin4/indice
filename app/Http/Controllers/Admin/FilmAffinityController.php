@@ -266,24 +266,6 @@ class FilmAffinityController extends Controller
     	$movistarScrap->init();
     }
 
-    public function fromMovistarUrl(Request $request)
-    {
-    	$client = new Client();
-    	$url = $request->input('url');
-    	$crawler = $client->request('GET', $url);
-
-    	$tokens = explode('/', $url);
-		dd($tokens[sizeof($tokens)-2]);
-
-    	//SI HAY ERROR
-    	if ($client->getResponse()->getStatus() !== 200) {
-		return view('icback.error', ['message' => 'La url generada <a href="' . $url . '">' . $url . '</a> no es válida y devuelve un error ' . $client->getResponse()->getStatus()]);
-		} 
-
-		//SCRAPEAMOS PAGINA DEL CANAL (MOVISTAR)
-			$data = $this->movistarScrap->getPage($crawler, $date);
-    }
-
     public function fromMovistarSingle(movistarScrap $movistarScrap)
     {
     	$movistarScrap->initSingle();

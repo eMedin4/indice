@@ -22,52 +22,113 @@ class MovistarScrap
     {
     	//BORRAMOS LA LISTA
         $this->scrapRepository->resetMovistar();
+        echo 'borrada programacion antigua...' . PHP_EOL;
 
-        $date = Carbon::now()->toDateString();
         $client = new Client();
 
-        //RECORREMOS CADA CANAL
-        foreach (config('movies.channels') as $channel) {
-        	$url = 'http://www.movistarplus.es/guiamovil/' . $channel . '/' . $date;
-        	$crawler = $client->request('GET', $url);
+		$date = Carbon::now()->toDateString();
+		$validDate = $this->scrapRepository->getMovistarValidDate($date); //si ya hay peliculas en esta fecha retorna false. Si no hay peliculas returna true
+		if ($validDate) {
+	        foreach (config('movies.channels') as $channelCode => $channel) {
+	        	$url = 'http://www.movistarplus.es/guiamovil/' . $channelCode . '/' . $date;
+	        	$crawler = $client->request('GET', $url);
+	        	if ($client->getResponse()->getStatus() !== 200) echo $url . ' devuelve error ' . $client->getResponse()->getStatus();
+				$this->getPage($client, $crawler, $date, $channelCode, $channel);
+	        }
+		} else {
+			echo 'la fecha ' . $date . ' ya esta descargada' . PHP_EOL;
+		}
 
-        	//SI HAY ERROR
-        	if ($client->getResponse()->getStatus() !== 200) {
-			return view('icback.error', ['message' => 'La url generada <a href="' . $url . '">' . $url . '</a> no es válida y devuelve un error ' . $client->getResponse()->getStatus()]);
-			} 
-
-			//SCRAPEAMOS PAGINA DEL CANAL (MOVISTAR)
-			$data = $this->getPage($crawler, $date);
-        }
+		$date = Carbon::now()->addDay()->toDateString();
+		$validDate = $this->scrapRepository->getMovistarValidDate($date);
+		if ($validDate) {
+	        foreach (config('movies.channels') as $channelCode => $channel) {
+	        	$url = 'http://www.movistarplus.es/guiamovil/' . $channelCode . '/' . $date;
+	        	$crawler = $client->request('GET', $url);
+	        	if ($client->getResponse()->getStatus() !== 200) echo $url . ' devuelve error ' . $client->getResponse()->getStatus();
+				$this->getPage($client, $crawler, $date, $channelCode, $channel);
+			}
+		} else {
+			echo 'la fecha ' . $date . ' ya esta descargada' . PHP_EOL;
+		}
     }
 
     public function initSingle()
     {
-    	$date = Carbon::now()->toDateString();
     	$client = new Client();
-    	$url = 'http://www.movistarplus.es/guiamovil/MV3';
+
+    	$date = Carbon::now()->toDateString();
+    	$url = 'http://www.movistarplus.es/guiamovil/MV3/' . $date;
     	$crawler = $client->request('GET', $url);
+		$this->getPage($client, $crawler, $date, 'MV3', 'Canal #0');
 
-    	//SI HAY ERROR
-    	if ($client->getResponse()->getStatus() !== 200) {
-		return view('icback.error', ['message' => 'La url generada <a href="' . $url . '">' . $url . '</a> no es válida y devuelve un error ' . $client->getResponse()->getStatus()]);
-		} 
+    	$date = Carbon::now()->addDay()->toDateString();
+		$url = 'http://www.movistarplus.es/guiamovil/MV3/' . $date;
+    	$crawler = $client->request('GET', $url);
+    	$this->getPage($client, $crawler, $date, 'MV3', 'Canal #0');
 
-		//SCRAPEAMOS PAGINA DEL CANAL (MOVISTAR)
-			$data = $this->getPage($crawler, $date);
+    	echo 'terminado';
     }
 
-	public function getPage($crawler, $date)
+	public function getPage($client, $crawler, $date, $channelCode, $channel)
 	{
 
-		dd($crawler);
-		dd(count($crawler->filter('.container_box g_CN')));
-
 		//RECORREMOS FILAS
-		$crawler->filter('.container_box g_CN')->each(function($node, $i) {
-			dd($node);
+		$crawler->filter('.container_box.g_CN')->each(function($node, $i) use($client, $date, $channelCode, $channel) {
+
+			//SI NO ES CINE DESCARTAMOS
+			if ($node->filter('li.genre')->text() != 'Cine') return;
+			$title = trim($node->filter('li.title')->text());
+			$id = $this->format->movistarId($node->filter('a')->attr('href'));
+			$time = $node->filter('li.time')->text();
+			$datetime = $this->format->movistarDate($time, $date);
+			$splitDay = $this->format->splitDay($date); //6 DE LA MAÑANA DEL DIA $DATE
+
+			//SI LA HORA DE LA PELICULA ES ANTES DE LAS 6:00 (SPLITTIME) Y LA FILA DE LA TABLA ES DESPUES DE LA FILA 6, AÑADIMOS UN DÍA
+			if ($datetime < $splitDay && $i > 6) {
+				$datetime = $datetime->addDay();
+			}
+			
+			//ANULAMOS SI EL TITULO COINCIDE CON FRASES BANEADAS
+			foreach(config('movies.moviesTvBan') as $ban) {
+				if (strpos($title, $ban) !== FALSE) {
+					return;
+				}
+			}
+
+			//BORRAMOS PALABRAS BANEADAS DEL TITULO
+			$title = str_replace(config('movies.wordsTvBan'), '', $title);
+
+			//BUSCAMOS 1 COINCIDENCIA POR TITULO EXACTO
+			$movie = $this->scrapRepository->searchByTitle($title);
+
+			if ($movie) {
+				echo 'encontrada ' . $title . PHP_EOL;
+
+			} else  { //NO ENCONTRADAS
+
+				//ENTRAMOS EN LA FICHA
+				echo 'entramos en la ficha de ' . $title . PHP_EOL;
+				$page = $client->click($node->filter('a')->link());
+
+				//ALGUNAS FICHAS DE 'CINE CUATRO', 'CINE BLOCKBUSTER',.. SIN PELICULA, NO TIENEN AÑO EN LA FICHA, ANULAMOS
+				if ($page->filter('p[itemprop=datePublished]')->count() == 0) {
+					return;
+				}
+
+				//COJEMOS DATOS
+				$year = $page->filter('p[itemprop=datePublished]')->attr('content');
+				$original = $this->format->getElementIfExist($page, '.title-especial p', NULL);
+
+				//BUSCAMOS CON LOS DATOS
+				$movie = $this->scrapRepository->searchByDetails($title, $original, $year);
+			}
+
+			if ($movie) {
+				$this->scrapRepository->setMovie($movie, $datetime, $channelCode, $channel);
+			}
+
 		});
-		dd('no entra');
 
 	}
 

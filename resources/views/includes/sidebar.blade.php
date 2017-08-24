@@ -46,14 +46,14 @@
 
 			<li>
 				<a href="{{route('home')}}">
-					<span class="item-count">x</span>
+					<span class="item-count"><i class="fa fa-theater"></i></span>
 					<span>Estrenos y cartelera en cines</span>
 				</a>
 			</li>
 
 			<li>
-				<a href="#">
-					<span class="item-count">x</span>
+				<a href="{{route('tv')}}">
+					<span class="item-count"><i class="fa fa-live-tv"></i></span>
 					<span>Ahora en Televisión</span>
 				</a>
 			</li>

@@ -8,8 +8,36 @@
 return [
 
     'channels'  => [ 
-        'TVE', 'LA2', 'C4', 'T5', 'A3', 'SEXTA', 'MV3', 'MV1', 'CPCOLE', 'CPACCI', 'CPCOME', 'CPXTRA', 'AMC', 'AXN', 'SET', 'COSMO', 'CL13', 'PCM', 'DCH', 'DIVINI', 'FOXGE', 'FOXCR', 'HOLLYW', 'NEOX', 'NOVA', 'PARCH', 'SCI-FI', 'TCM', 'TNT',
-        ],
+        'TVE' => 'La 1',
+        'LA2' => 'La 2',
+        'C4' => 'Cuatro',
+        'T5' => 'Telecinco',
+        'A3' => 'Antena 3',
+        'SEXTA' => 'La Sexta',
+        'MV3' => 'Canal #0',
+        'MV1' => 'Movistar Estrenos',
+        'CPCOLE' => 'Movistar De Cine',
+        'CPACCI' => 'Movistar Acción',
+        'CPCOME' => 'Movistar Comedia ',
+        'CPXTRA' => 'Movistar Xtra',
+        'AMC' => 'AMC',
+        'AXN' => 'AXN',
+        'SET' => 'AXN White',
+        'COSMO' => 'Cosmo',
+        'CL13' => 'Calle 13',
+        'PCM' => 'Comdey Central',
+        'DCH' => 'Disney Channel',
+        'DIVINI' => 'Divinity',
+        'FOXGE' => 'Fox',
+        'FOXCR' => 'Fox Life',
+        'HOLLYW' => 'Hollywood',
+        'NEOX' => 'Neox',
+        'NOVA' => 'Nova',
+        'PARCH' => 'Paramount Channel',
+        'SCI-FI' => 'SyFy',
+        'TCM' => 'TCM',
+        'TNT' => 'TNT'
+    ],
 
     'moviesTvBan' => [
         'Destinos de película', 'Días de cine', 'Hollywood y política', 'Entrevista Bafta', 'Estreno en salas', 'Pool Fiction', 'Cuadernos de rodaje', 'Gui en Hollywood', 'Night Shyamalan', 'Informe cine', 'The Comedian\'s Guide', 'Huellas en la nieve', 'Selección TCM', 'Producción TCM', 'The Enfield Haunting'
