@@ -147,11 +147,6 @@ select {
     margin-right: 30px;
 }
 
-.top-bar {
-    display: flex;
-    justify-content: space-between;    
-}
-
 .hide {
     display: none;
 }
@@ -327,7 +322,11 @@ h1 {
 .top-bar-inner {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+}
+
+.top-bar-title {
+    display: flex;
+    align-items: center;
 }
 
 .top-bar .logo a {
@@ -338,6 +337,7 @@ h1 {
     background-repeat: no-repeat;
     background-position-y: 12px;
     display: inline-block;
+    font-size: 18px;
 }
 
 .top-bar-options li {
@@ -421,8 +421,9 @@ h1 {
     }
 
     .toggle-icon i {
-        font-size: 29px;
-        padding: 4px;
+        font-size: 22px;
+        padding-right: 10px;
+        margin-right: 18px;
     }
 
 /* ICONO HAMBURGUER */
@@ -501,7 +502,7 @@ h1 {
         position: relative;
     }
 
-    .mobile-bar {
+    .toggle-icon {
         display: none;
     }
 
@@ -1751,10 +1752,6 @@ input[type=checkbox]:checked + .lbl-check:before {
         margin-left: 10px;
     }
 
-    .logo a {
-        font-size: 32px;
-    }
-
     .margins {
         margin-left: 25px;
         margin-right: 15px;
@@ -1871,10 +1868,6 @@ input[type=checkbox]:checked + .lbl-check:before {
 
     .list-info-wrap {
         padding-top: 10px;
-    }
-
-    .mobile-bar {
-        padding-left: 6px;
     }
 
 }

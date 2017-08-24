@@ -17,8 +17,6 @@
 
 		<section class="content">
 
-			@include('includes.mobile-bar')
-
 			<div class="main-content">
 
 				<h1 class="h1 margins">Películas en Televisión</h1>
@@ -47,6 +45,8 @@
 				@endif
 
 			</div><!--main-content-->
+
+			<div class="darken-overlay"></div>
 
 		</section>
 

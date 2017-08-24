@@ -16,8 +16,6 @@
 		@include('includes.sidebar')
 		<section class="content">
 
-			@include('includes.mobile-bar')
-
 			<div class="main-content">
 
 				<h1 class="h1 margins" data-id="{{$list->id}}" data-link="{{url()->current()}}" data-counter="{{$list->movies->count()}}">{{$list->name}}</h1>

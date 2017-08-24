@@ -252,6 +252,11 @@ class ScrapRepository {
         $param->save();
     }
 
+    public function getParam($name, $column)
+    {
+        return Param::where('name', $name)->value($column);
+    }
+
     public function theatres($theatres)
     {
         Theatre::truncate();
@@ -348,6 +353,7 @@ class ScrapRepository {
     public function getMovistarValidDate($date)
     {
         $match = MovistarSchedule::whereDate('time', $date)->count();
+        dd($match);
         if ($match > 50) return false;
         return true;
     }
