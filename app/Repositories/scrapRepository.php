@@ -348,7 +348,7 @@ class ScrapRepository {
     public function getMovistarValidDate($date)
     {
         $match = MovistarSchedule::whereDate('time', $date)->count();
-        if ($match > 8) return false;
+        if ($match > 50) return false;
         return true;
     }
 
