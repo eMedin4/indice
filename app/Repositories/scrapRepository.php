@@ -237,7 +237,7 @@ class ScrapRepository {
         }
     }
 
-    public function setParams($name, $value=NULL, $date=NULL) 
+    public function setParam($name, $value=NULL, $date=NULL) 
     {
         //SI EXISTE UNA FILA CON EL NOMBRE QUE VAMOS A GUARDAR, ANTES LA BORRAMOS
         $old = Param::where('name', $name);

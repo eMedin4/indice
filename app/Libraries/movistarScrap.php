@@ -26,33 +26,39 @@ class MovistarScrap
 
         $client = new Client();
 
-		$date = Carbon::now()->toDateString();
-		$validDate = $getParam('Movistar', 'date');
-		if (isset($validDate) && ($date > $validDate)) {
-	        foreach (config('movies.channels') as $channelCode => $channel) {
-	        	$url = 'http://www.movistarplus.es/guiamovil/' . $channelCode . '/' . $date;
+		$lastDayScapped = $this->scrapRepository->getParam('Movistar', 'date');
+		$lastDayScapped = $lastDayScapped->format('Y-m-d');
+		$today = Carbon::now()->toDateString();
+
+		if ($lastDayScapped <= $today) { //DESCARGAMOS PARRILLA DE MAÑANA SIEMPRE QUE lastDayScrapped no sea mayor que hoy (algo extraño si pasa)
+
+			$tomorrow = Carbon::now()->addDay()->toDateString();
+			echo 'descargando fecha de mañana día ' . $tomorrow . ' ... ' . PHP_EOL;
+			foreach (config('movies.channels') as $channelCode => $channel) {
+	        	$url = 'http://www.movistarplus.es/guiamovil/' . $channelCode . '/' . $tomorrow;
 	        	$crawler = $client->request('GET', $url);
 	        	if ($client->getResponse()->getStatus() !== 200) echo $url . ' devuelve error ' . $client->getResponse()->getStatus();
-				$this->getPage($client, $crawler, $date, $channelCode, $channel);
-	        }
-	        $this->scrapRepository->setParams('Movistar', null, $date);
+				$this->getPage($client, $crawler, $tomorrow, $channelCode, $channel);
+			}
+			$this->scrapRepository->setParam('Movistar', null, $tomorrow);
+			echo 'fecha de mañana dia ' . $tomorrow . ' descargada.' . PHP_EOL;
+
+			if ($lastDayScapped < $today) { //DESCARGAMOS PARRILLA DE HOY SI lastDayScrapped se ha quedado atras
+
+				foreach (config('movies.channels') as $channelCode => $channel) {
+		        	$url = 'http://www.movistarplus.es/guiamovil/' . $channelCode . '/' . $today;
+		        	$crawler = $client->request('GET', $url);
+		        	if ($client->getResponse()->getStatus() !== 200) echo $url . ' devuelve error ' . $client->getResponse()->getStatus();
+					$this->getPage($client, $crawler, $today, $channelCode, $channel);
+		        }
+		        echo 'fecha de hoy dia ' . $today . ' descargada.' . PHP_EOL;
+
+		    }
+
 		} else {
-			echo 'la fecha ' . $date . ' ya esta descargada' . PHP_EOL;
+			echo 'la fecha del parámetro es superior al día de hoy, por lo que no descargamos nada, revisar.' . PHP_EOL;
 		}
 
-		$date = Carbon::now()->addDay()->toDateString();
-		$validDate = $getParam('Movistar', 'date');
-		if (isset($validDate) && ($date > $validDate)) {
-	        foreach (config('movies.channels') as $channelCode => $channel) {
-	        	$url = 'http://www.movistarplus.es/guiamovil/' . $channelCode . '/' . $date;
-	        	$crawler = $client->request('GET', $url);
-	        	if ($client->getResponse()->getStatus() !== 200) echo $url . ' devuelve error ' . $client->getResponse()->getStatus();
-				$this->getPage($client, $crawler, $date, $channelCode, $channel);
-			}
-			$this->scrapRepository->setParams('Movistar', null, $date);
-		} else {
-			echo 'la fecha ' . $date . ' ya esta descargada' . PHP_EOL;
-		}
     }
 
     public function initSingle()

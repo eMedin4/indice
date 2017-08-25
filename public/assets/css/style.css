@@ -314,14 +314,19 @@ h1 {
 ************************************************************************************************/
 
 .top-bar {
-    background: #111113;
+    background: #151619;
     height: 50px;
     line-height: 50px;
+}
+
+.top-bar .wrap {
+    display: block;
 }
 
 .top-bar-inner {
     display: flex;
     justify-content: space-between;
+    padding: 0 20px;
 }
 
 .top-bar-title {
@@ -696,7 +701,7 @@ h1 {
 .item-count {
     font-size: 16px;
     letter-spacing: -1px;
-    background: #222933;
+    background: #151619;
     width: 24px;
     flex: 0 0 24px;
     display: inline-block;
@@ -704,6 +709,10 @@ h1 {
     margin-right: 10px;
     border-radius: 3px;
     /*color: #8c939a;*/
+}
+
+.item-count-hl {
+    color: #3a76dc;
 }
 
 .item-empty {

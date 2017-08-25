@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-        $schedule->command('cartelera')
-                ->weekly()->fridays()->at('06:00');
+        /*$schedule->command('cartelera')
+                ->weekly()->fridays()->at('06:00');*/
     }
 
     /**
