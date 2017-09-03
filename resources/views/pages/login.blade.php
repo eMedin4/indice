@@ -8,8 +8,6 @@
 
 	<div class="wrap">
 
-		<div class="false-info"></div>
-
 		<div class="login-box">
 
 			<div class="logo">

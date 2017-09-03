@@ -135,11 +135,6 @@ select {
     vertical-align: middle;
 }*/
 
-.false-info {
-    flex: 0 0 40%;
-    background: #1e2125;
-}
-
 .margins {
 /*    padding-left: 54px;
     padding-right: 30px;*/
@@ -699,7 +694,7 @@ h1 {
 }
 
 .item-count {
-    font-size: 16px;
+    font-size: 15px;
     letter-spacing: -1px;
     background: #151619;
     width: 24px;
@@ -708,7 +703,7 @@ h1 {
     text-align: center;
     margin-right: 10px;
     border-radius: 3px;
-    /*color: #8c939a;*/
+    color: #c0c7ce;
 }
 
 .item-count-hl {
@@ -780,18 +775,19 @@ h1 {
     background: #1f2329;
     padding: 0px 3px;
     white-space: nowrap;
-    color: #7a8088;
+    color: #959ca7;
     font-size: 14px;
     text-transform: uppercase;
     position: relative;
     top: -2px;
     margin-left: 3px;
     border-radius: 2px;
+    font-weight: 600;
 }
 
 .lab-new-release {
     color: #fff;
-    background: #9e4742;
+    background: #af2e26;
 }
 
 /* HACK EXTRACTOS DE 3 LINEAS */
@@ -1599,19 +1595,15 @@ input[type=checkbox]:checked + .lbl-check:before {
 
 .login-box {
     align-self: center;
-    margin-top: -20px;
     padding-left: 40px;
-
+    margin: -40px auto 0;
 }
 
-.login-page .logo {
-
-}
-
-.login-page .logo a {
-    font-size: 48px;
-    line-height: 48px;
-    letter-spacing: -2px;
+.login-box .logo a {
+    font-size: 40px;
+    font-weight: 600;
+    padding-bottom: 12px;
+    display: inline-block;
 }
 
 .login-page p {
