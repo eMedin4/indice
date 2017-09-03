@@ -45,7 +45,7 @@ class Icback
 			//PRIMERA FECHA LA GUARDAMOS COMO FECHA DE CARTELERA
 			$dateSection = $this->format->date($element->filter('.rdate-cat')->text());
 			if ($i==0) {
-				$this->scrapRepository->setParams('Cartelera', NULL, $dateSection);
+				$this->scrapRepository->setParam('Cartelera', NULL, $dateSection);
 			} 
 
 			//RECORREMOS LAS PELÍCULAS DE LA SECCION
