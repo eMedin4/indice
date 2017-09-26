@@ -56,7 +56,7 @@
 							<li><span class="link btn-cancel-filter">puntuación {{$filters['fromnote']}} - {{$filters['tonote']}}</span></li>
 						@endif
 						<li class="break">{{$list->created_at->formatLocalized('%e %b %Y')}}, actualizada {{$list->updated_at->diffForHumans()}}. </li>
-						<li>{{$list->movies->count()}} películas. </li>
+						<li>{{$list->movies->count()}} películas </li>
 						<li><a class="user" href="{{route('userpage', ['name' => str_slug($list->user->name), 'id' => $list->user->id])}}"><i class="icon-user fa fa-user-circle"></i> {{$list->user->nick}}</a></li>
 					</ul>
 				</div>

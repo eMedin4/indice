@@ -4,9 +4,9 @@
 @section('metadescription', '¿Que películas estan echando ahora en Televisión? ¿Cuales podras ver esta noche? Toda las peliculas en programación de TDT, Movistar plus y canales digitales')
 @section('og_type', 'website')
 @section('og_url', 'http://indicecine.net/Televisión')
-@section('og_title', 'Indicecine televisión')
+@section('og_title', 'Películas hoy en tv')
 <!-- falta imagen -->
-@section('og_description', 'Programación de televisión: Todas las películas de los canales de la TDT, Movistar Plus, y canales digitales')
+@section('og_description', '¿Quieres qué películas hay ahora en tv? ¿Y esta noche? Indicecine es la guía de películas en tv de toda la parrilla de televisión.')
 @section('bodyclass', 'list-page')
 
 @section('content')
@@ -19,9 +19,12 @@
 
 			<div class="main-content">
 
-				<h1 class="h1 margins">Películas en Televisión</h1>
+				<div class="header-list margins">
+					<i class="fa fa-live-tv"></i>
+					<h1 class="h1">Películas en Tv</h1>
+				</div>
 
-				<p class="list-description margins">Todas las películas en televisión</p>
+				<p class="list-description margins">Todas las películas hoy en tv. La programación de tv de cine hoy, canal por canal.</p>
 
 				<div class="list-info-wrap margins">
 					<ul class="list-info">
@@ -41,7 +44,7 @@
 				@if ($list->count())
 					@include('includes.loop', ['items' => $list])
 				@else
-					<h3 class="empty">No hay nada aún</h3>
+					<h3 class="empty margins">No hay nada aún</h3>
 				@endif
 
 			</div><!--main-content-->

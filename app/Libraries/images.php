@@ -10,7 +10,7 @@ class Images
 	{
 		try {
 			$url = 'http://image.tmdb.org/t/p/w1280' . $file;
-			Image::make($url)->fit(76, 114)->save(public_path() . '/assets/movieimages/posters/std/' . $slug . '.jpg');
+			Image::make($url)->fit(86, 129)->save(public_path() . '/assets/movieimages/posters/std/' . $slug . '.jpg');
 			Image::make($url)->fit(150, 225)->save(public_path() . '/assets/movieimages/posters/lrg/' . $slug . '.jpg');
 			Image::make($url)->fit(30, 45)->save(public_path() . '/assets/movieimages/posters/sml/' . $slug . '.jpg');
 			return 'saved';

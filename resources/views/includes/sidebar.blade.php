@@ -17,7 +17,7 @@
 
 			@else
 				<li>
-					<a href="{{route('login')}}"><span class="item-count">0</span><span><i class="icon-ordered fa fa-sort-numeric-asc"></i>Mi Top 100</span></a>
+					<a href="{{route('login')}}"><span class="item-count">0</span><span>Mi Top 100<i class="icon-ordered fa fa-sort-numeric-asc"></i></span></a>
 				</li>
 				<li>
 					<a href="{{route('login')}}"><span class="item-count">0</span><span>Películas que quiero ver</span></a>
