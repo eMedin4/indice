@@ -73,7 +73,7 @@
 */
 
 	//PRINCIPAL
-	Route::get('/cartelera-cines', ['as' => 'home', 'uses' => 'MovieController@home']);
+	Route::get('/', ['as' => 'home', 'uses' => 'MovieController@home']);
 	Route::get('/peliculas-hoy-tv', ['as' => 'tv', 'uses' => 'MovieController@tv']);
 	
 	//VER USUARIO
